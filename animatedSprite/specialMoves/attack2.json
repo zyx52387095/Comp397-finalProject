@@ -1,0 +1,32 @@
+{
+
+"images": [
+    "attack2.png"
+],
+
+"frames": [
+    [1, 1, 67, 46, 0, 0, 0],
+    [70, 1, 63, 46, 0, 0, 0],
+    [135, 1, 53, 46, 0, 0, 0],
+    [190, 1, 103, 45, 0, 0, 0],
+    [295, 1, 83, 45, 0, 0, 0],
+    [380, 1, 66, 45, 0, 0, 0],
+    [448, 1, 49, 45, 0, 0, 0]
+],
+
+"animations": {
+    "0": { "frames": [5] },
+    "1": { "frames": [4] },
+    "2": { "frames": [3] },
+    "3": { "frames": [0] },
+    "4": { "frames": [1] },
+    "5": { "frames": [2] },
+    "6": { "frames": [6] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:e5cf5753e3bb10d2750eac0bd746de64:85239f7699b0f497f2252ecda291e43c:f1acd2b21b4eee11c32151e8a40914a0$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

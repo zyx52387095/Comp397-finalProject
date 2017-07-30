@@ -1,0 +1,42 @@
+{
+
+"images": [
+    "attack1.png"
+],
+
+"frames": [
+    [1, 1, 91, 48, 0, 0, 0],
+    [1, 51, 87, 60, 0, 0, 0],
+    [1, 113, 83, 49, 0, 0, 0],
+    [86, 113, 39, 46, 0, 0, 0],
+    [1, 164, 78, 63, 0, 0, 0],
+    [81, 164, 46, 50, 0, 0, 0],
+    [81, 216, 45, 45, 0, 0, 0],
+    [1, 229, 70, 45, 0, 0, 0],
+    [73, 263, 49, 63, 0, 0, 0],
+    [1, 276, 57, 45, 0, 0, 0],
+    [1, 323, 49, 45, 0, 0, 0],
+    [52, 328, 48, 45, 0, 0, 0]
+],
+
+"animations": {
+    "0": { "frames": [3] },
+    "1": { "frames": [5] },
+    "2": { "frames": [8] },
+    "3": { "frames": [4] },
+    "4": { "frames": [1] },
+    "5": { "frames": [0] },
+    "6": { "frames": [2] },
+    "7": { "frames": [7] },
+    "8": { "frames": [9] },
+    "9": { "frames": [11] },
+    "10": { "frames": [6] },
+    "11": { "frames": [10] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:7374c27caa391eca61ab709e758298b4:2022cd4c5011eba85a2cd5db5be0eb79:7e601c03f4e924b36564ec791c9504f4$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

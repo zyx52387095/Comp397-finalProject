@@ -1,0 +1,26 @@
+{
+
+"images": [
+    "idel.png"
+],
+
+"frames": [
+    [1, 1, 42, 48, 0, 0, 0],
+    [1, 51, 43, 47, 0, 0, 0],
+    [45, 1, 43, 47, 0, 0, 0],
+    [46, 50, 42, 47, 0, 0, 0]
+],
+
+"animations": {
+    "0": { "frames": [1] },
+    "1": { "frames": [2] },
+    "2": { "frames": [0] },
+    "3": { "frames": [3] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:cc7aa01cf2cf64c97efe97541b2baa19:9502f1a9f7d2eae692cef531d6d0dd5f:75255ec487d4558886e9533e243f74d4$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

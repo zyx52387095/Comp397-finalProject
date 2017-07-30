@@ -1,0 +1,40 @@
+{
+
+"images": [
+    "jump.png"
+],
+
+"frames": [
+    [1, 1, 35, 79, 0, 0, 0],
+    [1, 82, 35, 77, 0, 0, 0],
+    [38, 1, 44, 56, 0, 0, 0],
+    [38, 59, 43, 57, 0, 0, 0],
+    [83, 59, 43, 56, 0, 0, 0],
+    [83, 117, 43, 56, 0, 0, 0],
+    [1, 161, 36, 64, 0, 0, 0],
+    [84, 1, 40, 55, 0, 0, 0],
+    [39, 118, 40, 59, 0, 0, 0],
+    [39, 179, 39, 48, 0, 0, 0],
+    [81, 175, 39, 52, 0, 0, 0]
+],
+
+"animations": {
+    "0": { "frames": [9] },
+    "1": { "frames": [2] },
+    "2": { "frames": [4] },
+    "3": { "frames": [3] },
+    "4": { "frames": [5] },
+    "5": { "frames": [10] },
+    "6": { "frames": [7] },
+    "7": { "frames": [6] },
+    "8": { "frames": [1] },
+    "9": { "frames": [0] },
+    "10": { "frames": [8] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:e361062a05cd36c9b93abc7181f8e075:7105ee58e72cd1b5d4b71267f1b50ab5:56c9fa24931e40777fe0ddacfe328adf$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

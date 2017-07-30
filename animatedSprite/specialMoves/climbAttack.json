@@ -1,0 +1,36 @@
+{
+
+"images": [
+    "climbAttack.png"
+],
+
+"frames": [
+    [1, 1, 87, 68, 0, 0, 0],
+    [1, 71, 94, 56, 0, 0, 0],
+    [90, 1, 43, 64, 0, 0, 0],
+    [97, 67, 91, 59, 0, 0, 0],
+    [135, 1, 70, 56, 0, 0, 0],
+    [190, 59, 47, 56, 0, 0, 0],
+    [207, 1, 40, 56, 0, 0, 0],
+    [239, 59, 41, 55, 0, 0, 0],
+    [249, 1, 29, 50, 0, 0, 0]
+],
+
+"animations": {
+    "0": { "frames": [8] },
+    "1": { "frames": [2] },
+    "2": { "frames": [0] },
+    "3": { "frames": [3] },
+    "4": { "frames": [1] },
+    "5": { "frames": [4] },
+    "6": { "frames": [5] },
+    "7": { "frames": [6] },
+    "8": { "frames": [7] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:01b8b04401d49c6d374fc63e936e9c14:8b192835442d13bc11b8a7263d795488:2bd8ec3af4fc642ae01d665880d62a1f$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

@@ -1,0 +1,30 @@
+{
+
+"images": [
+    "jumpAttack.png"
+],
+
+"frames": [
+    [1, 1, 36, 79, 0, 0, 0],
+    [39, 1, 41, 78, 0, 0, 0],
+    [82, 1, 54, 76, 0, 0, 0],
+    [138, 1, 52, 75, 0, 0, 0],
+    [192, 1, 100, 74, 0, 0, 0],
+    [294, 1, 52, 62, 0, 0, 0]
+],
+
+"animations": {
+    "0": { "frames": [5] },
+    "1": { "frames": [4] },
+    "2": { "frames": [2] },
+    "3": { "frames": [3] },
+    "4": { "frames": [1] },
+    "5": { "frames": [0] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:afef863d2bdb06426413a8d064aa8050:f82592e1305b56e3152693cd8423da07:b595fe69a3a6de7619e6ea523c0f51aa$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

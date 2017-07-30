@@ -1,0 +1,44 @@
+{
+
+"images": [
+    "climb.png"
+],
+
+"frames": [
+    [1, 1, 31, 59, 0, 0, 0],
+    [1, 62, 38, 48, 0, 0, 0],
+    [34, 1, 31, 59, 0, 0, 0],
+    [41, 62, 38, 48, 0, 0, 0],
+    [67, 1, 31, 59, 0, 0, 0],
+    [81, 62, 32, 48, 0, 0, 0],
+    [100, 1, 31, 59, 0, 0, 0],
+    [115, 62, 34, 46, 0, 0, 0],
+    [133, 1, 28, 58, 0, 0, 0],
+    [151, 61, 42, 45, 0, 0, 0],
+    [163, 1, 28, 58, 0, 0, 0],
+    [193, 1, 35, 53, 0, 0, 0],
+    [195, 56, 33, 51, 0, 0, 0]
+],
+
+"animations": {
+    "0": { "frames": [0] },
+    "1": { "frames": [2] },
+    "2": { "frames": [11] },
+    "3": { "frames": [1] },
+    "4": { "frames": [8] },
+    "5": { "frames": [4] },
+    "6": { "frames": [6] },
+    "7": { "frames": [3] },
+    "8": { "frames": [10] },
+    "9": { "frames": [12] },
+    "10": { "frames": [5] },
+    "11": { "frames": [7] },
+    "12": { "frames": [9] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:4f1b11d86c9768579f860e273a0d7a44:e51f10f42b2382cd932c806ff047cbb4:ce1fc0504c13b795b2f9f10613d76a39$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}
