@@ -13,17 +13,28 @@
 
 <script>
     var stage,loader;
+    var megamanSpeed=16;
+    const ARROW_KEY_LEFT = 37;
+    const ARROW_KEY_RIGHT = 39;
+    const BOARDER = 20;
+    const MEGAMAN_WIDTH = 100;
 
     function init() {
         stage = new createjs.Stage(document.getElementById('canvas'));
         createjs.Ticker.addEventListener("tick", runGame);
         createjs.Ticker.setFPS(60);
+        setControls()
         addPig();
     }
     function addPig() {
         var ssIdel = new createjs.SpriteSheet(idel);
         megamanIdel = new createjs.Sprite(ssIdel, 'idle');
         stage.addChild(megamanIdel);
+
+        
+
+        leftWall = BOARDER;
+        rightWall = canvas.width - BOARDER;
 
         //jump animation
         /*var ssJump = new createjs.SpriteSheet(jump);
@@ -33,6 +44,7 @@
         var ssRun = new createjs.SpriteSheet(run);
         megamanRun = new createjs.Sprite(ssRun, 'run');
         //stage.addChild(megamanRun);
+        megamanRun.velx = megamanSpeed;
 
         /*var ssDash = new createjs.SpriteSheet(dash);
         megamanDash = new createjs.Sprite(ssDash, 'all');
@@ -48,8 +60,8 @@
 
 
 
-
     }
+
     function runGame(e) {
         //pig.y += 1;
         //pig.x += 1;
@@ -62,6 +74,9 @@
         megamanOut.y =megamanClimb.y + 70*/
         
         stage.update();
+        updateMegaman();
+       
+
 
         stage.addEventListener("stagemousedown", handleRunStart);
         stage.addEventListener("stagemouseup", handleIdle);
@@ -80,10 +95,66 @@
         stage.removeChild(megamanRun);
         stage.addChild(megamanIdel);
     }
+
+    
+    
     function handleAttack1(){
         
 
     }
+
+    function setControls() {
+    window.onkeydown = handleKeyDown;
+    window.onkeyup = handleKeyUp;
+    }
+    function handleKeyDown(e) {
+    e = !e ? window.event : e;
+    switch (e.keyCode) {
+        case ARROW_KEY_LEFT:
+            leftKeyDown = true;
+            break;
+        case ARROW_KEY_RIGHT:
+            rightKeyDown = true;
+            break;
+    }
+    }
+    function handleKeyUp(e) {
+    e = !e ? window.event : e;
+    switch (e.keyCode) {
+        case ARROW_KEY_LEFT:
+            leftKeyDown = false;
+            break;
+        case ARROW_KEY_RIGHT:
+            rightKeyDown = false;
+            break;
+        case SPACE_KEY:
+            if (gameRunning) {
+                createjs.Ticker.setPaused(createjs.Ticker.getPaused() ? false : true);
+            }
+            else {
+                resetGame();
+            }
+            break;
+    }
+    }
+    function updateMegaman() {
+    var nextX = megamanRun.x;
+    if (leftKeyDown) {
+        nextX = megamanRun.x - megamanSpeed;
+        if (nextX < leftWall) {
+            nextX = leftWall;
+        }
+    }
+    else if (rightKeyDown) {
+        nextX = megamanRun.x + megamanSpeed;
+        if (nextX > rightWall - megamanRun.width) {
+            nextX = rightWall - megamanRun.width;
+        }
+    }
+    megamanRun.nextX = nextX;
+    }
+
+
 
     var idel = {
         "images":["idel.png"],
