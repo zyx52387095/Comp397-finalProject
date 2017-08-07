@@ -18,6 +18,10 @@
     const ARROW_KEY_RIGHT = 39;
     const BOARDER = 20;
     const MEGAMAN_WIDTH = 100;
+    const SPACE_KEY = 32;
+
+    var leftKeyDown = false;
+    var rightKeyDown = false;
 
     function init() {
         stage = new createjs.Stage(document.getElementById('canvas'));
@@ -29,7 +33,9 @@
     function addPig() {
         var ssIdel = new createjs.SpriteSheet(idel);
         megamanIdel = new createjs.Sprite(ssIdel, 'idle');
+        
         stage.addChild(megamanIdel);
+        
 
         
 
@@ -65,6 +71,7 @@
     function runGame(e) {
         //pig.y += 1;
         //pig.x += 1;
+        megamanIdel.nextX =0;
         megamanIdel.y=megamanIdel.x=300
         megamanRun.y=megamanRun.x=300
         /*megamanJump.y = 50   //jump anime position
@@ -81,9 +88,9 @@
         stage.addEventListener("stagemousedown", handleRunStart);
         stage.addEventListener("stagemouseup", handleIdle);
 
-        if (pig.y > stage.canvas.height) {
+        /*if (pig.y > stage.canvas.height) {
             pig.x = pig.y = 0;
-        }
+        }*/
     }
 
     function handleRunStart() {
@@ -138,20 +145,20 @@
     }
     }
     function updateMegaman() {
-    var nextX = megamanRun.x;
+    var nextX = megamanIdel.x;
     if (leftKeyDown) {
-        nextX = megamanRun.x - megamanSpeed;
+        nextX = megamanIdel.x - megamanSpeed;
         if (nextX < leftWall) {
             nextX = leftWall;
         }
     }
     else if (rightKeyDown) {
-        nextX = megamanRun.x + megamanSpeed;
-        if (nextX > rightWall - megamanRun.width) {
-            nextX = rightWall - megamanRun.width;
+        nextX = megamanIdel.x + megamanSpeed;
+        if (nextX > rightWall - megamanIdel.width) {
+            nextX = rightWall - megamanIdel.width;
         }
     }
-    megamanRun.nextX = nextX;
+    megamanIdel.nextX = nextX;
     }
 
 
