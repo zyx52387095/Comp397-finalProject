@@ -21,20 +21,19 @@
         addPig();
     }
     function addPig() {
-        var ssIdel = new createjs.SpriteSheet(idel);
+        /*var ssIdel = new createjs.SpriteSheet(idel);
         megamanIdel = new createjs.Sprite(ssIdel, 'all');
         stage.addChild(megamanIdel);
 
-        //jump animation
         var ssJump = new createjs.SpriteSheet(jump);
         megamanJump = new createjs.Sprite(ssJump, 'all');
-        stage.addChild(megamanJump);
+        stage.addChild(megamanJump);*/
 
-         var ssRun = new createjs.SpriteSheet(run);
-         megamanRun = new createjs.Sprite(ssRun, 'all');
-         stage.addChild(megamanRun);
+        var ssRun = new createjs.SpriteSheet(run);
+        megamanRun = new createjs.Sprite(ssRun, 'all');
+        stage.addChild(megamanRun);
 
-        var ssDash = new createjs.SpriteSheet(dash);
+/*        var ssDash = new createjs.SpriteSheet(dash);
         megamanDash = new createjs.Sprite(ssDash, 'all');
         stage.addChild(megamanDash);
 
@@ -45,10 +44,10 @@
         var ssOut = new createjs.SpriteSheet(out);
         megamanOut = new createjs.Sprite(ssOut, 'all');
         stage.addChild(megamanOut);
-
-        // var ssPlayer = new createjs.SpriteSheet(playerSprite);
-        // playerAll = new createjs.Sprite(playerSprite, 'all');
-        // stage.addChild(playerAll.run);
+*/
+        var ssPlayer = new createjs.SpriteSheet(playerSprite);
+        playerAll = new createjs.Sprite(playerSprite, 'all');
+        stage.addChild(playerAll.run);
 
 
 
@@ -58,19 +57,19 @@
         //pig.y += 1;
         //pig.x += 1;
 
-        megamanJump.y = 50   //jump anime position
+        /*megamanJump.y = 50   //jump anime position
         megamanRun.y =megamanJump.y + 70
         megamanDash.y =megamanRun.y + 70
         megamanClimb.y =megamanDash.y + 70
-        megamanOut.y =megamanClimb.y + 70
+        megamanOut.y =megamanClimb.y + 70*/
         
         stage.update();
-        // if (pig.y > stage.canvas.height) {
-        //     pig.x = pig.y = 0;
-        // }
+        /*if (pig.y > stage.canvas.height) {
+            pig.x = pig.y = 0;
+        }*/
     }
-/*    var playerSprite = {
-                run: new Createjs.spritesheet({
+    var playerSprite = {
+                run: new createjs.spritesheet({
                     framerate: 30,              
                 "images":["run.png"],
         "frames": [
@@ -161,9 +160,9 @@
         }
                 }),
 
-            };*/
+            };
 
-    var idel = {
+    /*var idel = {
         "images":["idel.png"],
         "frames": [
     [1, 1, 42, 48, 0, 0, 0],
@@ -202,7 +201,7 @@
                 "speed":.2
             }
         }
-    };
+    };*/
 
     var run = {
         "images":["run.png"],
@@ -233,7 +232,7 @@
         }
     };
 
-    var dash = {
+    /*var dash = {
         "images":["dash.png"],
         "frames": [
     [1, 1, 56, 42, 0, 0, 0],
@@ -303,7 +302,7 @@
 
             }
         }
-    };
+    };*/
 
 </script>
 </html>

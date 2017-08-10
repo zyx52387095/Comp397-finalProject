@@ -50,6 +50,39 @@ function init() {
             "TakeHit": [45, 57, "Damage"]
 				}
 			});*/
+			var playerSprite = {
+				run: new Createjs.spritesheet({
+					framerate: 30,				
+				"images":["run.png"],
+        		"frames": [
+    [1, 1, 43, 49, 0, 0, 0],
+    [46, 1, 42, 49, 0, 0, 0],
+    [90, 1, 46, 48, 0, 0, 0],
+    [138, 1, 45, 48, 0, 0, 0],
+    [185, 1, 44, 48, 0, 0, 0],
+    [231, 1, 40, 48, 0, 0, 0],
+    [273, 1, 50, 47, 0, 0, 0],
+    [325, 1, 46, 47, 0, 0, 0],
+    [373, 1, 45, 47, 0, 0, 0],
+    [420, 1, 48, 46, 0, 0, 0],
+    [470, 1, 45, 46, 0, 0, 0],
+    [517, 1, 38, 46, 0, 0, 0],
+    [557, 1, 50, 45, 0, 0, 0],
+    [609, 1, 49, 45, 0, 0, 0],
+    [660, 1, 36, 45, 0, 0, 0],
+    [698, 1, 50, 44, 0, 0, 0]
+],
+        "animations":{
+
+            "all":{
+            "frames":[14, 11, 7, 4, 5, 8 ,13, 10, 6, 2,0, 1, 3, 15, 9, 12],
+            "speed":.2
+            }}}),
+				attack: new Createjs.spritesheet(),
+				jump: new Createjs.spritesheet(),
+				dash: new Createjs.spirtesheet(),
+
+			};
 			var spriteSheet = new createjs.SpriteSheet({
 				framerate: 30,
 				"images":["run.png"],
