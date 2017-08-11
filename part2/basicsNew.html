@@ -2,7 +2,9 @@
 <html>
 <head>
     <title></title>
-    <script src="../lib/easeljs-0.7.1.min.js"></script>
+    <script src="../lib/easeljs-0.7.1.min.js"></script>\
+    <script src="../lib/tweenjs-0.5.1.min.js"></script>
+    <script src="../lib/preloadjs-0.4.1.min.js"></script>
 </head>
 
 <body onload="init()">
@@ -36,7 +38,8 @@
 
     }
     function runGame(e) {
-        playerAll.y = 70        
+        playerAll.y = 70
+        tick();        
         stage.update();
     }
     var playerAll = {
@@ -199,10 +202,35 @@
 
     }}
     function resetState(){
-    if(xKeyHeld === "NONE" && yKeyHeld === "NONE" && playerSTATE === "idle"){
+    if(xKeyHeld === "NONE" && yKeyHeld === "NONE" && playerSTATE === "RUN"){
         playerSTATE = "IDLE";
         playerAll.gotoAndPlay("idle");
     }}
+    function tick(event){
+  
+    switch(xKeyHeld){
+        case "LEFT":
+            playerAll.x -= 3;
+            break;
+        case "RIGHT":
+      //if(player.x < npc.x - 85)
+            playerAll.x += 3;
+            break;
+    }
+
+    switch(yKeyHeld){
+        case "UP":
+          playerAll.y -= 3;
+            //kahoona.scaleX += 0.1;
+            //kahoona.scaleY += 0.1;
+            break;
+        case "DOWN":
+            playerAll.y += 3;
+            //kahoona.scaleX *= 1.01;
+            //kahoona.scaleY *= 1.01;
+            break;
+    }
+}
 
     /*var idle = {
         "images":["idle.png"],
