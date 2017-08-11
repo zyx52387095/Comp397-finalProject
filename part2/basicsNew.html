@@ -12,7 +12,10 @@
 </body>
 
 <script>
+    
     var stage;
+    var playerState = "IDLE";
+    var playerDirection = "RIGHT";
 
     function init() {
         stage = new createjs.Stage(document.getElementById('canvas'));
@@ -21,149 +24,188 @@
         addPig();
     }
     function addPig() {
-        /*var ssIdel = new createjs.SpriteSheet(idel);
-        megamanIdel = new createjs.Sprite(ssIdel, 'all');
-        stage.addChild(megamanIdel);
 
-        var ssJump = new createjs.SpriteSheet(jump);
-        megamanJump = new createjs.Sprite(ssJump, 'all');
-        stage.addChild(megamanJump);*/
-
-        var ssRun = new createjs.SpriteSheet(run);
+        /*var ssRun = new createjs.SpriteSheet(run);
         megamanRun = new createjs.Sprite(ssRun, 'all');
-        stage.addChild(megamanRun);
-
-/*        var ssDash = new createjs.SpriteSheet(dash);
-        megamanDash = new createjs.Sprite(ssDash, 'all');
-        stage.addChild(megamanDash);
-
-        var ssClimb = new createjs.SpriteSheet(climb);
-        megamanClimb = new createjs.Sprite(ssClimb, 'all');
-        stage.addChild(megamanClimb);
-
-        var ssOut = new createjs.SpriteSheet(out);
-        megamanOut = new createjs.Sprite(ssOut, 'all');
-        stage.addChild(megamanOut);
-*/
-        var ssPlayer = new createjs.SpriteSheet(playerSprite);
-        playerAll = new createjs.Sprite(playerSprite, 'all');
-        stage.addChild(playerAll.run);
+        stage.addChild(megamanRun);*/
 
 
-
+        var ssPlayer = new createjs.SpriteSheet(playerAll);
+        playerAll = new createjs.Sprite(ssPlayer, "idle");
+        stage.addChild(playerAll);
 
     }
     function runGame(e) {
-        //pig.y += 1;
-        //pig.x += 1;
-
-        /*megamanJump.y = 50   //jump anime position
-        megamanRun.y =megamanJump.y + 70
-        megamanDash.y =megamanRun.y + 70
-        megamanClimb.y =megamanDash.y + 70
-        megamanOut.y =megamanClimb.y + 70*/
-        
+        playerAll.y = 70        
         stage.update();
-        /*if (pig.y > stage.canvas.height) {
-            pig.x = pig.y = 0;
-        }*/
     }
-    var playerSprite = {
-                run: new createjs.spritesheet({
-                    framerate: 30,              
-                "images":["run.png"],
+    var playerAll = {
+        "images": ["idle.png","jump.png","run.png"],
         "frames": [
-    [1, 1, 43, 49, 0, 0, 0],
-    [46, 1, 42, 49, 0, 0, 0],
-    [90, 1, 46, 48, 0, 0, 0],
-    [138, 1, 45, 48, 0, 0, 0],
-    [185, 1, 44, 48, 0, 0, 0],
-    [231, 1, 40, 48, 0, 0, 0],
-    [273, 1, 50, 47, 0, 0, 0],
-    [325, 1, 46, 47, 0, 0, 0],
-    [373, 1, 45, 47, 0, 0, 0],
-    [420, 1, 48, 46, 0, 0, 0],
-    [470, 1, 45, 46, 0, 0, 0],
-    [517, 1, 38, 46, 0, 0, 0],
-    [557, 1, 50, 45, 0, 0, 0],
-    [609, 1, 49, 45, 0, 0, 0],
-    [660, 1, 36, 45, 0, 0, 0],
-    [698, 1, 50, 44, 0, 0, 0]
-],
+        [1, 1, 42, 48, 0, 0, 0],
+        [1, 51, 43, 47, 0, 0, 0], 
+        [45, 1, 43, 47, 0, 0, 0],
+        [46, 50, 42, 47, 0, 0, 0],
+        
+        [1, 1, 35, 79, 1, 0, 0],
+        [1, 82, 35, 77, 1, 0, 0],
+        [38, 1, 44, 56, 1, 0, 0],
+        [38, 59, 43, 57, 1, 0, 0],
+        [83, 59, 43, 56, 1, 0, 0],
+        [83, 117, 43, 56, 1, 0, 0],
+        [1, 161, 36, 64, 1, 0, 0],
+        [84, 1, 40, 55, 1, 0, 0],
+        [39, 118, 40, 59, 1, 0, 0],
+        [39, 179, 39, 48, 1, 0, 0],
+        [81, 175, 39, 52, 1, 0, 0], 
 
+        [1, 1, 43, 49, 2, 0, 0],
+        [46, 1, 42, 49, 2, 0, 0],
+        [90, 1, 46, 48, 2, 0, 0],
+        [138, 1, 45, 48, 2, 0, 0],
+        [185, 1, 44, 48, 2, 0, 0],
+        [231, 1, 40, 48, 2, 0, 0],
+        [273, 1, 50, 47, 2, 0, 0],
+        [325, 1, 46, 47, 2, 0, 0],
+        [373, 1, 45, 47, 2, 0, 0],
+        [420, 1, 48, 46, 2, 0, 0],
+        [470, 1, 45, 46, 2, 0, 0],
+        [517, 1, 38, 46, 2, 0, 0],
+        [557, 1, 50, 45, 2, 0, 0],
+        [609, 1, 49, 45, 2, 0, 0],
+        [660, 1, 36, 45, 2, 0, 0],
+        [698, 1, 50, 44, 2, 0, 0]
+    ],
+        
+ 
         "animations":{
-            "all":{
-                "frames":[14, 11, 7, 4, 5, 8 ,13, 10, 6, 2,0, 1, 3, 15, 9, 12],
-                "speed":.2
-            }}}),
-                idel: new Createjs.spritesheet({
-                    "images":["idel.png"],
-        "frames": [
-    [1, 1, 42, 48, 0, 0, 0],
-    [1, 51, 43, 47, 0, 0, 0],
-    [45, 1, 43, 47, 0, 0, 0],
-    [46, 50, 42, 47, 0, 0, 0]
-],
-
-        "animations":{
-            "all":{
-                "frames":[0, 1, 2, 3],
-                "speed":.08
-            }
+            "idle":[0,3,"idle",0.2],
+            "jump":[4,8,"idle",0.2],
+            "run" :[12,28,"idle",0.2]
         }
-                }),
-                jump: new Createjs.spritesheet({
-                    "images":["jump.png"],
-        "frames": [
-    [1, 1, 35, 79, 0, 0, 0],
-    [1, 82, 35, 77, 0, 0, 0],
-    [38, 1, 44, 56, 0, 0, 0],
-    [38, 59, 43, 57, 0, 0, 0],
-    [83, 59, 43, 56, 0, 0, 0],
-    [83, 117, 43, 56, 0, 0, 0],
-    [1, 161, 36, 64, 0, 0, 0],
-    [84, 1, 40, 55, 0, 0, 0],
-    [39, 118, 40, 59, 0, 0, 0],
-    [39, 179, 39, 48, 0, 0, 0],
-    [81, 175, 39, 52, 0, 0, 0]
-],
+    }
 
-        "animations":{
-            "all":{
-                "frames":[9, 2, 4, 3, 5, 10 ,7, 6, 1, 0,8],
-                "speed":.2
-            }
+    var KEYCODE_SPACE = 32; 
+    var KEYCODE_W = 87;         
+    var KEYCODE_A = 65; 
+    var KEYCODE_D = 68;     
+    var KEYCODE_S = 83;
+    var xKeyHeld = "NONE";
+    var yKeyHeld = "NONE";
+    document.onkeydown = handleKeyDown.bind(this);
+    document.getElementById("canvas").onkeydown = handleKeyDown;
+
+    function handleKeyDown(e){
+    //console.log("keydown");
+    //cross browser issues exist
+    if (!e) {
+        var e = window.event;
+    }
+
+//Only move when in idle state
+//Attack animation must finish before movement can occur
+    switch (e.keyCode) {
+        case KEYCODE_SPACE: //space
+            if(playerAll.currentAnimation != "jump"){
+                playerAll.gotoAndPlay("jump");
+                playerSTATE = "JUMP";
+                xKeyHeld = yKeyHeld = "NONE";
+            }      
+        /*//hit collision
+        console.log(player.x - npc.x);
+     
+        if(player.x - npc.x){
+          console.log("true");
+          npc.gotoAndPlay("Melee");
         }
-                }),
-                out: new Createjs.spirtesheet({
-                    "images":["out.png"],
-        "frames": [
-    [1, 1, 6, 79, 0, 0, 0],
-    [9, 1, 43, 62, 0, 0, 0],
-    [9, 65, 58, 54, 0, 0, 0],
-    [54, 1, 64, 60, 0, 0, 0],
-    [69, 63, 34, 55, 0, 0, 0],
-    [105, 63, 41, 54, 0, 0, 0],
-    [120, 1, 60, 58, 0, 0, 0],
-    [148, 61, 37, 58, 0, 0, 0],
-    [187, 1, 41, 49, 0, 0, 0],
-    [187, 52, 40, 54, 0, 0, 0]
-],
-
-        "animations":{
-            "all":{
-                "frames":[8, 5, 9, 4, 7, 1 ,6, 3, 2,],
-                "speed":.2
-                //deleted the last frame from animations
-
             }
+            break;*/
+
+        case KEYCODE_D:
+        //case KEYCODE_RIGHT:
+            runningState("RIGHT");
+            break;
+
+        case KEYCODE_A:
+        //case KEYCODE_LEFT:
+            runningState("LEFT");
+            break;
+
+        case KEYCODE_W:
+        //case KEYCODE_UP:
+            runningState("UP");
+            break;
+
+        case KEYCODE_S:
+        //case KEYCODE_DOWN:
+            runningState("DOWN");
+            break;
+            
+    }}
+    function runningState(direction){
+    if(playerAll.currentAnimation != "jump"){
+        if(playerSTATE != "JUMP"){
+            playerAll.gotoAndPlay("run");
+            playerSTATE = "RUN";
         }
-                }),
 
-            };
+        if(direction == "UP" || direction == "DOWN")
+        {
+            yKeyHeld = direction;
+        }else{
+                //FIX DIRECTION CHANGE
+            if(playerDirection != direction)
+                playerAll.scaleX *= -1;
+            playerDirection = direction;
+            xKeyHeld = direction;
+        }
+    }
+    }
+    function handleKeyUp(e){
+    console.log("keyup");
+    if (!e) { //For browser compatability
+        var e = window.event;
+    }
 
-    /*var idel = {
-        "images":["idel.png"],
+    switch (e.keyCode) {
+        case KEYCODE_SPACE:
+            yKeyHeld = "NONE";
+            resetState();
+            break;
+
+        case KEYCODE_D:
+        //case KEYCODE_RIGHT:
+            xKeyHeld = "NONE";
+            resetState();
+            break;
+
+        case KEYCODE_A:
+        //case KEYCODE_LEFT:
+            xKeyHeld = "NONE";
+            resetState();
+            break;
+
+        case KEYCODE_W:
+        //case KEYCODE_UP:
+            yKeyHeld = "NONE";
+            resetState();
+            break;
+
+        case KEYCODE_S:
+        //case KEYCODE_DOWN:
+            yKeyHeld = "NONE";
+            resetState();
+            break;
+
+    }}
+    function resetState(){
+    if(xKeyHeld === "NONE" && yKeyHeld === "NONE" && playerSTATE === "idle"){
+        playerSTATE = "IDLE";
+        playerAll.gotoAndPlay("idle");
+    }}
+
+    /*var idle = {
+        "images":["idle.png"],
         "frames": [
     [1, 1, 42, 48, 0, 0, 0],
     [1, 51, 43, 47, 0, 0, 0],
@@ -203,7 +245,7 @@
         }
     };*/
 
-    var run = {
+    /*var run = {
         "images":["run.png"],
         "frames": [
     [1, 1, 43, 49, 0, 0, 0],
@@ -230,7 +272,7 @@
                 "speed":.2
             }
         }
-    };
+    };*/
 
     /*var dash = {
         "images":["dash.png"],
