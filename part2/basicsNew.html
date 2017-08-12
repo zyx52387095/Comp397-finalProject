@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-    <script src="../lib/easeljs-0.7.1.min.js"></script>\
+    <script src="../lib/easeljs-0.7.1.min.js"></script>
     <script src="../lib/tweenjs-0.5.1.min.js"></script>
     <script src="../lib/preloadjs-0.4.1.min.js"></script>
 </head>
@@ -16,7 +16,7 @@
 <script>
     
     var stage;
-    var playerState = "IDLE";
+    var playerSTATE = "IDLE";
     var playerDirection = "RIGHT";
 
     function init() {
@@ -35,10 +35,11 @@
         var ssPlayer = new createjs.SpriteSheet(playerAll);
         playerAll = new createjs.Sprite(ssPlayer, "idle");
         stage.addChild(playerAll);
+        playerAll.y = 70
 
     }
     function runGame(e) {
-        playerAll.y = 70
+        //playerAll.y = 70
         tick();        
         stage.update();
     }
@@ -84,7 +85,7 @@
         "animations":{
             "idle":[0,3,"idle",0.2],
             "jump":[4,8,"idle",0.2],
-            "run" :[12,28,"idle",0.2]
+            "run" :[12,28,"run",0.2]
         }
     }
 
@@ -95,6 +96,7 @@
     var KEYCODE_S = 83;
     var xKeyHeld = "NONE";
     var yKeyHeld = "NONE";
+    document.onkeyup = handleKeyUp.bind(this);
     document.onkeydown = handleKeyDown.bind(this);
     document.getElementById("canvas").onkeydown = handleKeyDown;
 
@@ -113,7 +115,7 @@
                 playerAll.gotoAndPlay("jump");
                 playerSTATE = "JUMP";
                 xKeyHeld = yKeyHeld = "NONE";
-            }      
+            }    
         /*//hit collision
         console.log(player.x - npc.x);
      
@@ -121,8 +123,8 @@
           console.log("true");
           npc.gotoAndPlay("Melee");
         }
-            }
-            break;*/
+            }*/
+            break;
 
         case KEYCODE_D:
         //case KEYCODE_RIGHT:
@@ -146,8 +148,9 @@
             
     }}
     function runningState(direction){
-    if(playerAll.currentAnimation != "jump"){
-        if(playerSTATE != "JUMP"){
+    if(playerAll.currentAnimation != "jump")
+    {
+        if(playerSTATE != "RUN"){
             playerAll.gotoAndPlay("run");
             playerSTATE = "RUN";
         }

@@ -202,34 +202,36 @@ function handleKeyDown(e){
 				player.gotoAndPlay("Melee");
 				playerSTATE = "Melee";
 				xKeyHeld = yKeyHeld = "NONE";
+			}
+				
         
         //hit collision
-        console.log(player.x - npc.x);
+        /*console.log(player.x - npc.x);
      
         if(player.x - npc.x){
           console.log("true");
           npc.gotoAndPlay("Melee");
         }
-			}
+			}*/
 			break;
 
 		case KEYCODE_D:
-		case KEYCODE_RIGHT:
+		//case KEYCODE_RIGHT:
 			runningState("RIGHT");
 			break;
 
 		case KEYCODE_A:
-		case KEYCODE_LEFT:
+		//case KEYCODE_LEFT:
 			runningState("LEFT");
 			break;
 
 		case KEYCODE_W:
-		case KEYCODE_UP:
+		//case KEYCODE_UP:
 			runningState("UP");
 			break;
 
 		case KEYCODE_S:
-		case KEYCODE_DOWN:
+		//case KEYCODE_DOWN:
 			runningState("DOWN");
 			break;
 			
@@ -297,7 +299,7 @@ resets the state of the character
 	function resetState(){
 		if(xKeyHeld === "NONE" && yKeyHeld === "NONE" && playerSTATE === "RUN"){
 			playerSTATE = "IDLE";
-			player.gotoAndPlay("Melee");
+			player.gotoAndPlay("idle");
 		}
 	}
 
