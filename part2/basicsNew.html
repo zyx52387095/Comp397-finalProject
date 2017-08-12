@@ -44,7 +44,7 @@
         stage.update();
     }
     var playerAll = {
-        "images": ["idle.png","jump.png","run.png"],
+        "images": ["idle.png","jump.png","run.png","attack1.png"],
         "frames": [
         [1, 1, 42, 48, 0, 0, 0],
         [1, 51, 43, 47, 0, 0, 0], 
@@ -78,14 +78,29 @@
         [557, 1, 50, 45, 2, 0, 0],
         [609, 1, 49, 45, 2, 0, 0],
         [660, 1, 36, 45, 2, 0, 0],
-        [698, 1, 50, 44, 2, 0, 0]
-    ],
+        [698, 1, 50, 44, 2, 0, 0],
+
+        [1, 1, 91, 48, 3, 0, 0],
+        [1, 51, 87, 60, 3, 0, 0],
+        [1, 113, 83, 49, 3, 0, 0],
+        [86, 113, 39, 46, 3, 0, 0],
+        [1, 164, 78, 63, 3, 0, 0],
+        [81, 164, 46, 50, 3, 0, 0],
+        [81, 216, 45, 45, 3, 0, 0],
+        [1, 229, 70, 45, 3, 0, 0],
+        [73, 263, 49, 63, 3, 0, 0],
+        [1, 276, 57, 45, 3, 0, 0],
+        [1, 323, 49, 45, 3, 0, 0],
+        [52, 328, 48, 45, 3, 0, 0]
+        
+        ],
         
  
         "animations":{
             "idle":[0,3,"idle",0.2],
             "jump":[4,8,"idle",0.2],
-            "run" :[12,28,"run",0.2]
+            "run" :[12,28,"run",0.2],
+            "attack1":[29,35,"idle",0.2]
         }
     }
 
@@ -94,6 +109,8 @@
     var KEYCODE_A = 65; 
     var KEYCODE_D = 68;     
     var KEYCODE_S = 83;
+    var KEYCODE_J = 74;
+    var KEYCODE_K = 75;
     var xKeyHeld = "NONE";
     var yKeyHeld = "NONE";
     document.onkeyup = handleKeyUp.bind(this);
@@ -115,6 +132,7 @@
                 playerAll.gotoAndPlay("jump");
                 playerSTATE = "JUMP";
                 xKeyHeld = yKeyHeld = "NONE";
+                handleJump();
             }    
         /*//hit collision
         console.log(player.x - npc.x);
@@ -125,6 +143,14 @@
         }
             }*/
             break;
+
+        case KEYCODE_J: 
+            if(playerAll.currentAnimation != "attack1"){
+                playerAll.gotoAndPlay("attack1");
+                playerSTATE = "ATTACK1";
+                xKeyHeld = yKeyHeld = "NONE";
+            }    
+            break;    
 
         case KEYCODE_D:
         //case KEYCODE_RIGHT:
@@ -167,6 +193,19 @@
         }
     }
     }
+    var GRAVITY = 9.8,    
+        JUMP_SPEED = 2.5,        
+        PROPORTION = 200/1;
+        var time = createjs.Ticker.getInterval()/1000;
+        vy=0;  
+    function handleJump(){
+        playerAll.y += time*this.vy*PROPORTION;
+                    this.vy += time*GRAVITY;
+                    if(playerAll.y > this.y && this.vy > 0){
+                        playerAll.state = "RUN";
+                        playerAll.y=this.y;
+                        this.vy = 0;
+    }}
     function handleKeyUp(e){
     console.log("keyup");
     if (!e) { //For browser compatability
