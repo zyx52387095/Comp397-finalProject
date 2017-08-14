@@ -1,22 +1,36 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title></title>
-    <script src="easeljs-0.7.1.min.js"></script>
-    <script src="tweenjs-0.5.1.min.js"></script>
-    <script src="preloadjs-0.4.1.min.js"></script>
-    <style>
-        canvas{
-            background-color:black;
-        }
-    </style>
-</head>
+	<head>
+		<title>jumpy</title>
+		<style type="text/css">
+			* {
+				padding: 0px;
+				border: 0px;
+				margin: 0px;
+			}
 
-<body onload="init()">
+			body {
+				background-image: linear-gradient(bottom, rgb(37,9,115) 40%, rgb(101,60,176) 0%);
+				background-image: -o-linear-gradient(bottom, rgb(37,9,115) 40%, rgb(101,60,176) 0%);
+				background-image: -moz-linear-gradient(bottom, rgb(37,9,115) 40%, rgb(101,60,176) 0%);
+				background-image: -webkit-linear-gradient(bottom, rgb(37,9,115) 40%, rgb(101,60,176) 0%);
+				background-image: -ms-linear-gradient(bottom, rgb(37,9,115) 40%, rgb(101,60,176) 0%);
 
-<canvas id="Canvas" width="800" height="700"></canvas>
+				background-image: -webkit-gradient(
+					linear,
+					left bottom,
+					left top,
+					color-stop(0.4, rgb(37,9,115)),
+					color-stop(0, rgb(101,60,176))
+				);
+			}
+		</style>
+	</head>
+	<body>
 
-    <script src="BitmapText.js"></script>
-</body>
-
+	</body>
+	<script src="js/easeljs-0.4.2.min.js"></script>
+	<script src="js/easeljs-0.7.1.min.js"></script>
+	<script src="js/utils.js"></script>
+	<script src="js/hero.js"></script>
+	<script src="js/jumpy.js"></script>
 </html>

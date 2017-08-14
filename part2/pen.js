@@ -1,11 +1,10 @@
-
 var stage, w, h, loader;
 var player;
 var npc;
 var playerDirection = "RIGHT";
 var playerSTATE = "IDLE"; //
-var spriteSheetKahoona="run.png";
-//var spriteSheetNinja = "https://farm1.staticflickr.com/694/22704795114_e7bb9d1146_k.jpg";
+var spriteSheetKahoona="https://farm1.staticflickr.com/772/20801037743_6c4ea2f91b_k.jpg";
+var spriteSheetNinja = "https://farm1.staticflickr.com/694/22704795114_e7bb9d1146_k.jpg";
 
 function init() {
   stage = new createjs.Stage(document.getElementById("testCanvas"));
@@ -18,13 +17,13 @@ function init() {
   loader.on("complete", handleComplete, this);
   loader.crossOrigin = "";
   loader.loadFile({id:"player", src:spriteSheetKahoona});
-  //loader.loadFile({id:"cpu", src:spriteSheetNinja});
+  loader.loadFile({id:"cpu", src:spriteSheetNinja});
 }
 
  function handleComplete(evt) {
         
 		// Define a spritesheet. Note that this data was exported by Zoë.
-/*		var spriteSheet = new createjs.SpriteSheet({
+		var spriteSheet = new createjs.SpriteSheet({
 				framerate: 30,
 				"images": [loader.getResult("player")],
 				"frames":{
@@ -49,71 +48,7 @@ function init() {
 				    "Ready": [45, 94, "Ready"],
             "TakeHit": [45, 57, "Damage"]
 				}
-			});*/
-			var playerSprite = {
-				run: new Createjs.spritesheet({
-					framerate: 30,				
-				"images":["run.png"],
-        		"frames": [
-    [1, 1, 43, 49, 0, 0, 0],
-    [46, 1, 42, 49, 0, 0, 0],
-    [90, 1, 46, 48, 0, 0, 0],
-    [138, 1, 45, 48, 0, 0, 0],
-    [185, 1, 44, 48, 0, 0, 0],
-    [231, 1, 40, 48, 0, 0, 0],
-    [273, 1, 50, 47, 0, 0, 0],
-    [325, 1, 46, 47, 0, 0, 0],
-    [373, 1, 45, 47, 0, 0, 0],
-    [420, 1, 48, 46, 0, 0, 0],
-    [470, 1, 45, 46, 0, 0, 0],
-    [517, 1, 38, 46, 0, 0, 0],
-    [557, 1, 50, 45, 0, 0, 0],
-    [609, 1, 49, 45, 0, 0, 0],
-    [660, 1, 36, 45, 0, 0, 0],
-    [698, 1, 50, 44, 0, 0, 0]
-],
-        "animations":{
-
-            "all":{
-            "frames":[14, 11, 7, 4, 5, 8 ,13, 10, 6, 2,0, 1, 3, 15, 9, 12],
-            "speed":.2
-            }}}),
-				attack: new Createjs.spritesheet(),
-				jump: new Createjs.spritesheet(),
-				dash: new Createjs.spirtesheet(),
-
-			};
-			var spriteSheet = new createjs.SpriteSheet({
-				framerate: 30,
-				"images":["run.png"],
-        "frames": [
-    [1, 1, 43, 49, 0, 0, 0],
-    [46, 1, 42, 49, 0, 0, 0],
-    [90, 1, 46, 48, 0, 0, 0],
-    [138, 1, 45, 48, 0, 0, 0],
-    [185, 1, 44, 48, 0, 0, 0],
-    [231, 1, 40, 48, 0, 0, 0],
-    [273, 1, 50, 47, 0, 0, 0],
-    [325, 1, 46, 47, 0, 0, 0],
-    [373, 1, 45, 47, 0, 0, 0],
-    [420, 1, 48, 46, 0, 0, 0],
-    [470, 1, 45, 46, 0, 0, 0],
-    [517, 1, 38, 46, 0, 0, 0],
-    [557, 1, 50, 45, 0, 0, 0],
-    [609, 1, 49, 45, 0, 0, 0],
-    [660, 1, 36, 45, 0, 0, 0],
-    [698, 1, 50, 44, 0, 0, 0]
-],
-
-        "animations":{
-        	"Melee": [14, 11],
-			"Damage": [7, 4],
-            // "all":{
-            //     "frames":[14, 11, 7, 4, 5, 8 ,13, 10, 6, 2,0, 1, 3, 15, 9, 12],
-            //     "speed":.2
-            }
-        
-    });
+			});
 
 		player = new createjs.Sprite(spriteSheet, "Ready");
 		player.x = 100;
@@ -188,7 +123,6 @@ document.getElementById("testCanvas").onkeydown = handleKeyDown;
 //kahoona is the hero model
 
 function handleKeyDown(e){
-	//console.log("keydown");
 	//cross browser issues exist
 	if (!e) {
 		var e = window.event;
@@ -202,36 +136,34 @@ function handleKeyDown(e){
 				player.gotoAndPlay("Melee");
 				playerSTATE = "Melee";
 				xKeyHeld = yKeyHeld = "NONE";
-			}
-				
         
         //hit collision
-        /*console.log(player.x - npc.x);
+        console.log(player.x - npc.x);
      
         if(player.x - npc.x){
           console.log("true");
-          npc.gotoAndPlay("Melee");
+          npc.gotoAndPlay("TakeHit");
         }
-			}*/
+			}
 			break;
 
 		case KEYCODE_D:
-		//case KEYCODE_RIGHT:
+		case KEYCODE_RIGHT:
 			runningState("RIGHT");
 			break;
 
 		case KEYCODE_A:
-		//case KEYCODE_LEFT:
+		case KEYCODE_LEFT:
 			runningState("LEFT");
 			break;
 
 		case KEYCODE_W:
-		//case KEYCODE_UP:
+		case KEYCODE_UP:
 			runningState("UP");
 			break;
 
 		case KEYCODE_S:
-		//case KEYCODE_DOWN:
+		case KEYCODE_DOWN:
 			runningState("DOWN");
 			break;
 			
@@ -240,8 +172,8 @@ function handleKeyDown(e){
 	// Running state
 	function runningState(direction){
 		if(player.currentAnimation != "Melee"){
-			if(playerSTATE != "all"){
-				player.gotoAndPlay("Melee");
+			if(playerSTATE != "RUN"){
+				player.gotoAndPlay("Running");
 				playerSTATE = "RUN";
 			}
 
@@ -299,7 +231,7 @@ resets the state of the character
 	function resetState(){
 		if(xKeyHeld === "NONE" && yKeyHeld === "NONE" && playerSTATE === "RUN"){
 			playerSTATE = "IDLE";
-			player.gotoAndPlay("idle");
+			player.gotoAndPlay("Ready");
 		}
 	}
 
