@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../lib/easeljs-0.7.1.min.js"></script>
+    <script src="SimpleButton.js"></script>
+</head>
+
+<body onload="init()">
+
+<canvas id="canvas" width="400" height="300" style="border: black solid 1px"></canvas>
+
+</body>
+
+<script>
+    var stage;
+    var btn;
+    function init() {
+        stage = new createjs.Stage(document.getElementById('canvas'));
+        stage.enableMouseOver();
+        createjs.Ticker.addEventListener("tick", stage);
+        addButtons();
+        btn1.addEventListener("click", function(){ window.location="level1.html"; });
+    }
+    function addButtons() {
+        btn1 = new ui.SimpleButton('Start Game');
+        
+        //btn.setButton({color:'white', fontSize:50, upColor:'green', overColor:'#ff69b4'});
+        btn1.setColor('white');
+        btn1.setUpColor('black');
+        
+        btn1.x = 115;
+        btn1.y = 130;
+        
+        stage.addChild(btn1);
+    }
+
+
+</script>
+</html>

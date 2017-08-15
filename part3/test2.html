@@ -28,7 +28,6 @@ p{
     stage = new createjs.Stage(canvas);
 
 var groundImage = 'http://cdn.gbtags.com/gblibraryassets/libid108/ground.png';
-var groundImage2 =  "https://lh3.googleusercontent.com/kEF2aLR4rybZa6ZGMl6gj-TbKnAxERKZ4FVJRMby6xBvBIq8lOxWnhoqk_wnGiCSL-IpSB9QrLAXzURm5h9GVA=s400";
 var stageHeight = canvas.height;
 var stageWidth = canvas.width;
 var blockHeight = 70;
@@ -46,27 +45,14 @@ var gravity = 1.8;
 var KEYCODE_UP = 38;
 var KEYCODE_LEFT = 37;
 var KEYCODE_RIGHT = 39;
-var shot = false;
   
-function level2(){
-  var ground = new createjs.Bitmap(groundImage2);
-      
-      //克隆5个地面图片生成游戏区域的地面效果
-      for (i = 0; i < 18; i++) {
-        var tempBlockGround = ground.clone();
-        tempBlockGround.x = i * 70;
-        tempBlockGround.y = stageHeight - blockHeight;
-        stage.addChild(tempBlockGround);
-      }
-}
-
 window.onload=function(){
       
   function setup() {
       
       var ground = new createjs.Bitmap(groundImage);
       
-      //克隆5个地面图片生成游戏区域的地面效果
+      //make grounds
       for (i = 0; i < 18; i++) {
         var tempBlockGround = ground.clone();
         tempBlockGround.x = i * 70;
@@ -171,17 +157,6 @@ window.onload=function(){
       character.x = 50;
       character.y = characterGround;
       stage.addChild(character);
-
-      bossSpritesheet = new createjs.SpriteSheet({
-              "images": ["BOSS/boss2.png"],
-              "frames": {"height": 140, "count": 5, "width": 160},
-              "animations": { run: [0,9]}
-          });
-      boss = new createjs.Sprite(bossSpritesheet);
-      boss.x = 500;
-      boss.y = 200;
-      stage.addChild(boss);
-      
       
       
       createjs.Ticker.addEventListener("tick", tick);
@@ -206,13 +181,13 @@ window.onload=function(){
               run()
               break;
           case 74:  //J
-/*              if(isJumping==true){
+              if(isJumping==true){
               character.gotoAndPlay("jumpAttack");
               }
               else{
                 character.gotoAndPlay("attack1");
-              }*/
-              attack();
+              }
+
               break;
 
       }
@@ -237,22 +212,6 @@ window.onload=function(){
               break;*/
               
       }
-  }
-  function attack(){
-          if(isJumping==true){
-              character.gotoAndPlay("jumpAttack");
-              }
-              else{
-                character.gotoAndPlay("attack1");
-              }
-    if(character.x>boss.x-50){
-      shot= ture;
-    }
-    if(shot){
-      stage.removeChild(boss);
-
-
-    }
   }
 
   function run(){
