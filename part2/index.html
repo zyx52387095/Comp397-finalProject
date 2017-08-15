@@ -20,19 +20,19 @@
         stage.enableMouseOver();
         createjs.Ticker.addEventListener("tick", stage);
         addButtons();
-        btn.addEventListener("click", function(){ window.location="level1.html"; });
+        btn1.addEventListener("click", function(){ window.location="level1.html"; });
     }
     function addButtons() {
-        btn = new ui.SimpleButton('Start Game');
+        btn1 = new ui.SimpleButton('Start Game');
         
         //btn.setButton({color:'white', fontSize:50, upColor:'green', overColor:'#ff69b4'});
-        btn.setColor('white');
-        btn.setUpColor('black');
+        btn1.setColor('white');
+        btn1.setUpColor('black');
         
-        btn.x = 115;
-        btn.y = 130;
+        btn1.x = 115;
+        btn1.y = 130;
         
-        stage.addChild(btn);
+        stage.addChild(btn1);
     }
 
 

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../lib/easeljs-0.7.1.min.js"></script>
+    <script src="../lib/tweenjs-0.5.1.min.js"></script>
+    <script src="../lib/preloadjs-0.4.1.min.js"></script>
+    <script src="SimpleButton.js"></script>
+</head>
+
+<body onload="init()">
+
+<p>W A S D or Arrow Keys to move</p>
+<p><b>J</b> to attack, <b>K</b> to dodge</p>
+
+<canvas id="canvas" width="800" height="800" style="border: black solid 1px;background-color: #add8e6"></canvas>
+
+</body>
+
+<script>
+    
+    var stage;
+    var playerSTATE = "IDLE";
+    var playerDirection = "RIGHT";
+    var playerFacing = "RIGHT";
+
+    var btn1;
+
+    function init() {
+        stage = new createjs.Stage(document.getElementById('canvas'));
+        createjs.Ticker.addEventListener("tick", runGame);
+        createjs.Ticker.setFPS(60);
+        addPig();
+        addButtons();
+
+        btn1.addEventListener("click", function(){ window.location="level2.html"; });
+
+        stage.enableMouseOver();
+    }
+    function addPig() {
+
+        /*var ssRun = new createjs.SpriteSheet(run);
+        megamanRun = new createjs.Sprite(ssRun, 'all');
+        stage.addChild(megamanRun);*/
+
+
+        var ssPlayer = new createjs.SpriteSheet(playerAll);
+        playerAll = new createjs.Sprite(ssPlayer, "idle");
+        stage.addChild(playerAll);
+        playerAll.y = 70
+
+        var npc = new createjs.SpriteSheet(npcAll);
+        npcAll = new createjs.Sprite(npc, "idle");
+
+        npcAll.x = 500;
+        npcAll.y = 300;
+        npcAll.scaleX *= -1;
+        stage.addChild(npcAll);
+
+    }
+    function runGame(e) {
+        //playerAll.y = 70
+        stage.addChild(btn1);
+        tick();        
+        stage.update();
+    }
+    var playerAll = {
+        "images": ["idle.png","jump.png","run.png","attack1.png","dash.png"],
+        "frames": [
+        [1, 1, 42, 48, 0, 0, 0],
+        [1, 51, 43, 47, 0, 0, 0], 
+        [45, 1, 43, 47, 0, 0, 0],
+        [46, 50, 42, 47, 0, 0, 0],//0-3
+        
+        [1, 1, 35, 79, 1, 0, 0],
+        [1, 82, 35, 77, 1, 0, 0],
+        [38, 1, 44, 56, 1, 0, 0],
+        [38, 59, 43, 57, 1, 0, 0],
+        [83, 59, 43, 56, 1, 0, 0],
+        [83, 117, 43, 56, 1, 0, 0],
+        [1, 161, 36, 64, 1, 0, 0],
+        [84, 1, 40, 55, 1, 0, 0],
+        [39, 118, 40, 59, 1, 0, 0],
+        [39, 179, 39, 48, 1, 0, 0],
+        [81, 175, 39, 52, 1, 0, 0], //4-14
+
+        [1, 1, 43, 49, 2, 0, 0],
+        [46, 1, 42, 49, 2, 0, 0],
+        [90, 1, 46, 48, 2, 0, 0],
+        [138, 1, 45, 48, 2, 0, 0],
+        [185, 1, 44, 48, 2, 0, 0],
+        [231, 1, 40, 48, 2, 0, 0],
+        [273, 1, 50, 47, 2, 0, 0],
+        [325, 1, 46, 47, 2, 0, 0],
+        [373, 1, 45, 47, 2, 0, 0],
+        [420, 1, 48, 46, 2, 0, 0],
+        [470, 1, 45, 46, 2, 0, 0],
+        [517, 1, 38, 46, 2, 0, 0],
+        [557, 1, 50, 45, 2, 0, 0],
+        [609, 1, 49, 45, 2, 0, 0],
+        [660, 1, 36, 45, 2, 0, 0],
+        [698, 1, 50, 44, 2, 0, 0], //15-30
+
+        [1, 1, 91, 48, 3, 0, 0],
+        [1, 51, 87, 60, 3, 0, 0],
+        [1, 113, 83, 49, 3, 0, 0],
+        [86, 113, 39, 46, 3, 0, 0],
+        [1, 164, 78, 63, 3, 0, 0],
+        [81, 164, 46, 50, 3, 0, 0],
+        [81, 216, 45, 45, 3, 0, 0],
+        [1, 229, 70, 45, 3, 0, 0],
+        [73, 263, 49, 63, 3, 0, 0],
+        [1, 276, 57, 45, 3, 0, 0],
+        [1, 323, 49, 45, 3, 0, 0],
+        [52, 328, 48, 45, 3, 0, 0],//31-42
+
+        [1, 1, 56, 42, 4, 0, 0],
+        [59, 1, 47, 45, 4, 0, 0],
+        [1, 45, 46, 44, 4, 0, 0],
+        [49, 48, 58, 35, 4, 0, 0],
+        [49, 85, 58, 35, 4, 0, 0],
+        [1, 91, 42, 46, 4, 0, 0],
+        [45, 122, 58, 35, 4, 0, 0],
+        [1, 139, 42, 45, 4, 0, 0], //43-50
+
+        
+        ],
+        
+ 
+        "animations":{
+            "idle":[0,3,"idle",0.2],
+            "jump":[4,8,"idle",0.2],
+            "run" :[12,28,"run",0.2],
+            "attack1":[31,35,"idle",0.2],
+            "dash": [43,44,"idle",0.1]
+        }
+    }
+
+    var npcAll = {
+        "images": ["idle.png","out.png"],
+        "frames": [
+        [1, 1, 42, 48, 0, 0, 0],
+        [1, 51, 43, 47, 0, 0, 0], 
+        [45, 1, 43, 47, 0, 0, 0],
+        [46, 50, 42, 47, 0, 0, 0],
+
+        [1, 1, 6, 79, 1, 0, 0],
+        [9, 1, 43, 62, 1, 0, 0],
+        [9, 65, 58, 54, 1, 0, 0],
+        [54, 1, 64, 60, 1, 0, 0],
+        [69, 63, 34, 55, 1, 0, 0],
+        [105, 63, 41, 54, 1, 0, 0],
+        [120, 1, 60, 58, 1, 0, 0],
+        [148, 61, 37, 58, 1, 0, 0],
+        [187, 1, 41, 49, 1, 0, 0],
+        [187, 52, 40, 54, 1, 0, 0]
+       
+        ],
+        
+        "animations":{
+            "idle":[0,3,"idle",0.2],
+            "out":[4,6,"idle",0.2],
+        }
+    }
+
+    var KEYCODE_SPACE = 32; 
+    var KEYCODE_W = 87;         
+    var KEYCODE_A = 65; 
+    var KEYCODE_D = 68;     
+    var KEYCODE_S = 83;
+    var KEYCODE_J = 74;
+    var KEYCODE_K = 75;
+    var xKeyHeld = "NONE";
+    var yKeyHeld = "NONE";
+    document.onkeyup = handleKeyUp.bind(this);
+    document.onkeydown = handleKeyDown.bind(this);
+    document.getElementById("canvas").onkeydown = handleKeyDown;
+
+    function handleKeyDown(e){
+    //console.log("keydown");
+    //cross browser issues exist
+    if (!e) {
+        var e = window.event;
+    }
+
+//Only move when in idle state
+//Attack animation must finish before movement can occur
+    switch (e.keyCode) {
+        case KEYCODE_SPACE: //space
+            if(playerAll.currentAnimation != "jump"){
+                playerAll.gotoAndPlay("jump");
+                playerSTATE = "JUMP";
+                xKeyHeld = yKeyHeld = "NONE";
+                handleJump();
+            
+        //hit collision
+        console.log(player.x - npc.x);
+           
+            break;
+        }
+
+        case KEYCODE_J: 
+            if(playerAll.currentAnimation != "attack1"){
+                playerAll.gotoAndPlay("attack1");
+                playerSTATE = "ATTACK1";
+                xKeyHeld = yKeyHeld = "NONE";
+                if(playerAll.x - npcAll.x){
+                console.log("true");
+                npcAll.gotoAndPlay("out");
+
+            }
+            }    
+            break;   
+
+        case KEYCODE_K: 
+            if(playerAll.currentAnimation != "attack1"){
+                playerAll.gotoAndPlay("dash");
+                playerSTATE = "DASH";
+                //xKeyHeld = yKeyHeld = "NONE";
+                console.log(playerFacing);
+                if(playerFacing="RIGHT")
+                {
+                    playerAll.x += 50; 
+                    //xKeyHeld= "NONE";
+                }
+                //if(playerFacing="LEFT")
+                else{
+                    playerAll.x -= 50;
+                    //xKeyHeld= "NONE";
+                }
+                }    
+            break;   
+
+        case KEYCODE_D:
+        //case KEYCODE_RIGHT:
+            runningState("RIGHT");
+            
+            break;
+
+        case KEYCODE_A:
+        //case KEYCODE_LEFT:
+            runningState("LEFT");
+            
+            break;
+
+        case KEYCODE_W:
+        //case KEYCODE_UP:
+            runningState("UP");
+            break;
+
+        case KEYCODE_S:
+        //case KEYCODE_DOWN:
+            runningState("DOWN");
+            break;
+            
+    }}
+    function runningState(direction){
+    if(playerAll.currentAnimation != "jump")
+    {
+        if(playerSTATE != "RUN"){
+            playerAll.gotoAndPlay("run");
+            playerSTATE = "RUN";
+        }
+
+        if(direction == "UP" || direction == "DOWN")
+        {
+            yKeyHeld = direction;
+        }else{
+                //FIX DIRECTION CHANGE
+            if(playerDirection != direction)
+                playerAll.scaleX *= -1;
+            playerDirection = direction;
+            xKeyHeld = direction;
+        }
+    }
+    }
+    function dashhandler(direction){
+        direction = playerDirection;
+        if(direction = "RIGHT")
+        {
+            playerAll.x += 50;
+        }
+        if(direction = "LEFT")
+        {
+            playerAll.x -= 50;
+        }
+    }
+    var GRAVITY = 9.8,    
+        JUMP_SPEED = 2.5,        
+        PROPORTION = 200/1;
+        var time = createjs.Ticker.getInterval()/1000;
+        vy=0;  
+    function handleJump(){
+        playerAll.y += time*this.vy*PROPORTION;
+                    this.vy += time*GRAVITY;
+                    if(playerAll.y > this.y && this.vy > 0){
+                        playerAll.state = "RUN";
+                        playerAll.y=this.y;
+                        this.vy = 0;
+    }}
+    function handleKeyUp(e){
+    console.log("keyup");
+    if (!e) { //For browser compatability
+        var e = window.event;
+    }
+
+    switch (e.keyCode) {
+        case KEYCODE_SPACE:
+            yKeyHeld = "NONE";
+            resetState();
+            
+            break;
+
+        case KEYCODE_D:
+        //case KEYCODE_RIGHT:
+            xKeyHeld = "NONE";
+            resetState();
+            playerFacing="RIGHT";
+            break;
+
+        case KEYCODE_A:
+        //case KEYCODE_LEFT:
+            xKeyHeld = "NONE";
+            resetState();
+            playerFacing="LEFT";
+            break;
+
+        case KEYCODE_W:
+        //case KEYCODE_UP:
+            yKeyHeld = "NONE";
+            resetState();
+            break;
+
+        case KEYCODE_S:
+        //case KEYCODE_DOWN:
+            yKeyHeld = "NONE";
+            resetState();
+            break;
+
+    }}
+    function resetState(){
+    if(xKeyHeld === "NONE" && yKeyHeld === "NONE" && playerSTATE === "RUN"){
+        playerSTATE = "IDLE";
+        playerAll.gotoAndPlay("idle");
+    }}
+    function tick(event){
+  
+    switch(xKeyHeld){
+        case "LEFT":
+            playerAll.x -= 3;
+            break;
+        case "RIGHT":
+      //if(player.x < npc.x - 85)
+            playerAll.x += 3;
+            break;
+    }
+
+    switch(yKeyHeld){
+        case "UP":
+          playerAll.y -= 3;
+            //kahoona.scaleX += 0.1;
+            //kahoona.scaleY += 0.1;
+            break;
+        case "DOWN":
+            playerAll.y += 3;
+            //kahoona.scaleX *= 1.01;
+            //kahoona.scaleY *= 1.01;
+            break;
+    }
+}
+    function addButtons() {
+        btn1 = new ui.SimpleButton('Proceed to the next level');
+        
+        //btn.setButton({color:'white', fontSize:50, upColor:'green', overColor:'#ff69b4'});
+        btn1.setColor('white');
+        btn1.setUpColor('black');
+        
+        btn1.x = 300;
+        btn1.y = 500;
+        
+        stage.addChild(btn1);
+    }
+
+</script>
+</html>
