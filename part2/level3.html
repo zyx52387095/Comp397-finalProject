@@ -16,7 +16,7 @@ p{
 }
 </style>
 <p>（"A"/"D" to move Left/Right. "W" to jump. "J" to attack）</p>
-
+<button onclick="level2()">level2</button>
 <canvas id="myCanvas" width="1250" height="400">
  
 </canvas>
@@ -28,6 +28,7 @@ p{
     stage = new createjs.Stage(canvas);
 
 var groundImage = 'http://cdn.gbtags.com/gblibraryassets/libid108/ground.png';
+var groundImage2 =  "https://lh3.googleusercontent.com/kEF2aLR4rybZa6ZGMl6gj-TbKnAxERKZ4FVJRMby6xBvBIq8lOxWnhoqk_wnGiCSL-IpSB9QrLAXzURm5h9GVA=s400";
 var stageHeight = canvas.height;
 var stageWidth = canvas.width;
 var blockHeight = 70;
@@ -46,6 +47,18 @@ var KEYCODE_UP = 38;
 var KEYCODE_LEFT = 37;
 var KEYCODE_RIGHT = 39;
   
+function level2(){
+  var ground = new createjs.Bitmap(groundImage2);
+      
+      //克隆5个地面图片生成游戏区域的地面效果
+      for (i = 0; i < 18; i++) {
+        var tempBlockGround = ground.clone();
+        tempBlockGround.x = i * 70;
+        tempBlockGround.y = stageHeight - blockHeight;
+        stage.addChild(tempBlockGround);
+      }
+}
+
 window.onload=function(){
       
   function setup() {
