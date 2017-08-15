@@ -133,6 +133,7 @@ function _game()
 		}
 
 		var metre =0-world.x;
+		metre = metre - (metre % 1000)
 		
 		for ( var c = 0; c < collideables.length; c++ ) {
 			var p = collideables[c];
@@ -141,15 +142,17 @@ function _game()
 			}
 		}
 
-		var rect = new createjs.Shape();
-	    rect.graphics.beginFill("black").drawRect(10, 10, 800, 50);
-	    rect.x = 180;
-	    rect.y = 10;
-		stage.addChild(rect);
-		var theMetre = new createjs.Text("Run for 100000m /" + metre + "m","normal 32px microsoft yahei","#fff");
-		theMetre.x = 200;
-		theMetre.y = 20
-		stage.addChild(theMetre);
+		if(ticks%100==0 || ticks ==5){
+			var rect = new createjs.Shape();
+		    rect.graphics.beginFill("black").drawRect(10, 10, 800, 50);
+		    rect.x = 180;
+		    rect.y = 10;
+			stage.addChild(rect);
+			var theMetre = new createjs.Text("Run for 50000m /" + metre + "m","normal 32px microsoft yahei","#fff");
+			theMetre.x = 200;
+			theMetre.y = 20
+			stage.addChild(theMetre);
+		}
 		stage.update();
 	}
 	
