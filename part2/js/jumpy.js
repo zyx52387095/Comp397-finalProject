@@ -113,6 +113,7 @@ function _game()
 	self.tick = function(e)
 	{
 		ticks++;
+
 		hero.tick();
 
 		if ( hero.y > h*3 ) {
@@ -131,6 +132,8 @@ function _game()
 			world.y = -hero.y + h*.3;
 		}
 
+		var metre =0-world.x;
+		
 		for ( var c = 0; c < collideables.length; c++ ) {
 			var p = collideables[c];
 			if ( p.localToGlobal(p.image.width,0).x < -10 ) {
@@ -138,6 +141,15 @@ function _game()
 			}
 		}
 
+		var rect = new createjs.Shape();
+	    rect.graphics.beginFill("black").drawRect(10, 10, 800, 50);
+	    rect.x = 180;
+	    rect.y = 10;
+		stage.addChild(rect);
+		var theMetre = new createjs.Text("Run for 100000m /" + metre + "m","normal 32px microsoft yahei","#fff");
+		theMetre.x = 200;
+		theMetre.y = 20
+		stage.addChild(theMetre);
 		stage.update();
 	}
 	
